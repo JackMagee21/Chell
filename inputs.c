@@ -1,8 +1,5 @@
 #include "inputs.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
 char *read_line(void){
     size_t cap = 128; // Num of allocated bytes
     size_t length = 0; // Num of bytes used so far
@@ -39,4 +36,15 @@ char *read_line(void){
 
     buf[length] = '\0';
     return buf;
+}
+
+void parse_input(char* input, char** args){
+    int i = 0;
+
+    args[i] = strtok(input, " ");
+
+    while(args[i] != NULL && i < 1023){
+        i++;
+        args[i] = strtok(NULL, " ");
+    }
 }
