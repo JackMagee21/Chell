@@ -9,4 +9,4 @@
 
 void handle_command(char **args);
 
-#endif COMMANDS_H
+#endif
