@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs myshell as a launchable desktop application.
+# Installs Chell as a launchable desktop application.
 #
 # What this does:
 #   1. Confirms the binary is built.
@@ -14,8 +14,8 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BINARY="$DIR/myshell"
-DESKTOP_FILE="myshell.desktop"
+BINARY="$DIR/main"
+DESKTOP_FILE="chell.desktop"
 APPS_DIR="$HOME/.local/share/applications"
 
 if [[ ! -x "$BINARY" ]]; then
@@ -28,7 +28,7 @@ mkdir -p "$APPS_DIR"
 cat > "$APPS_DIR/$DESKTOP_FILE" <<EOF
 [Desktop Entry]
 Type=Application
-Name=MyShell
+Name=Chell
 Comment=A simple custom command shell
 Exec=$BINARY
 Icon=utilities-terminal
@@ -38,7 +38,7 @@ EOF
 
 chmod +x "$APPS_DIR/$DESKTOP_FILE"
 echo "Installed launcher to: $APPS_DIR/$DESKTOP_FILE"
-echo "It should now appear in your application menu as 'MyShell'."
+echo "It should now appear in your application menu as 'Chell'."
 
 # Optional: also place a launcher on the Desktop for direct double-click
 if [[ -d "$HOME/Desktop" ]]; then
