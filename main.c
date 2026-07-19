@@ -1,15 +1,17 @@
-#include <stdio.h>
+#include "commands.h"
 #include "inputs.h"
 
 
-char input[1023];
+char *input;
+char *args[1024];
 
 int main() {
     while(input != "exit"){
         printf("> ");
-        printf(read_line());
+        input = read_line();
+        parse_input(input, args);
+        handle_command(args);
         printf("\n");
-
     }
     return 0;
 }
