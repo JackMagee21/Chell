@@ -1,6 +1,6 @@
 #include "commands.h"
 #include "inputs.h"
-
+#include "colors.h"
 
 char *input;
 char *args[1024];
@@ -14,13 +14,13 @@ void print_dir() {
         exit(0);
     }
 
-    printf("%s", cwd);
+    printf("%s%s", BOLD_BLUE, cwd);
 }
 
 int main() {
     while(1){
         print_dir();
-        printf("> ");
+        printf(">%s ", WHITE);
         input = read_line();
         parse_input(input, args);
         handle_command(args);

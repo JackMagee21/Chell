@@ -9,4 +9,4 @@
 char *read_line(void);
 void parse_input(char* input, char** args);
 
-#endif INPUTS_H
+#endif
