@@ -2,7 +2,10 @@
 
 void cmd_echo(char **args) {
     for(int i = 1; args[i] != NULL; i++) {
-        printf("%s ", args[i]);
+        printf("%s", args[i]);
+        if(args[i + 1] != NULL) {
+            printf(" ");
+        }
     }
 }
 
