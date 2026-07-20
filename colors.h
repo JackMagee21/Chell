@@ -3,6 +3,7 @@
 
 #define WHITE "\033[0m"
 
-#define BOLD_BLUE "\033[1;34m"
+#define BOLD_BLUE   "\033[1;34m"
+#define BOLD_GREEN  "\033[1;32m"
 
 #endif
