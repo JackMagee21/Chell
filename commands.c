@@ -29,6 +29,15 @@ void cmd_ls(char **args) {
     }
 }
 
+void cmd_cd(char **args) {
+
+    const char *target = args[1];
+    if(args[1] == NULL) {
+        target = getenv("HOME");
+    }
+    chdir(target);
+}
+
 void cmd_mkdir(char **args) {
     if(args[1] == NULL){
         printf("name for directory is currently empty: mkdir <name>");
@@ -39,8 +48,22 @@ void cmd_mkdir(char **args) {
         printf("Command for creating folder is: mkdir <name>");
     }
 
-    char *path = args[1];
+    const char *path = args[1];
     mkdir(path, 0777);
+}
+
+void cmd_rmdir(char **args) {
+    if(args[1] == NULL){
+        printf("name for directory is currently empty: rmdir <name>");
+        return;
+    }
+    if(args[2] != NULL){
+        printf("Unable to create folder due to naming complications\n");
+        printf("Command for creating folder is: rmdir <name>");
+    }
+
+    const char *path = args[1];
+    rmdir(path);
 }
 
 
@@ -49,13 +72,13 @@ void handle_command(char **args) {
 
     if(strcmp(args[0], "echo") == 0) {
         cmd_echo(args);
-    }
-
-    if(strcmp(args[0], "ls") == 0) {
+    } else if(strcmp(args[0], "ls") == 0) {
         cmd_ls(args);
-    }
-
-    if(strcmp(args[0], "mkdir") == 0) {
+    } else if (strcmp(args[0], "cd") == 0) {
+        cmd_cd(args);
+    } else if(strcmp(args[0], "mkdir") == 0) {
         cmd_mkdir(args);
-    }
+    } else if(strcmp(args[0], "rmdir") == 0) {
+        cmd_rmdir(args);
+    } 
 }
