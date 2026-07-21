@@ -1,6 +1,8 @@
 #include "commands.h"
 
-
+void cmd_exit() {
+    exit(0);
+}
 void cmd_echo(char **args) {
     for(int i = 1; args[i] != NULL; i++) {
         printf("%s", args[i]);
@@ -70,7 +72,9 @@ void cmd_rmdir(char **args) {
 void handle_command(char **args) {
     if(args[0] == NULL) return;
 
-    if(strcmp(args[0], "echo") == 0) {
+    if(strcmp(args[0], "exit") == 0) {
+        cmd_exit();
+    } else if(strcmp(args[0], "echo") == 0) {
         cmd_echo(args);
     } else if(strcmp(args[0], "ls") == 0) {
         cmd_ls(args);
